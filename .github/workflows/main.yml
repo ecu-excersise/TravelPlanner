@@ -7,7 +7,6 @@ on:
       
 env:
   DOTNET_VERSION: '9.x'
-  SOLUTION_PATH: 'TravelPlanner.WebApi'
 
 jobs: 
   build-and-deploy:
@@ -22,7 +21,7 @@ jobs:
          dotnet-version: ${{ env.DOTNET_VERSION }}
 
      - name: Restore dependencies
-       run: dotnet restore ${{ env.SOLUTION_PATH }}
+       run: dotnet restore
 
      - name: Build
-       run: dotnet build ${{ env.SOLUTION_PATH }} --no-restore --configuration Release
+       run: dotnet build --no-restore --configuration Release
