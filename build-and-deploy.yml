@@ -1,0 +1,21 @@
+name: build and deploy
+
+on:
+  workflow_dispatch:
+  push: 
+    branches:
+      - main
+      
+env:
+  DOTNET_VERSION: '9.x'
+
+jobs: 
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubunto-latest
+
+    steps:
+     - uses: actions/checkout@v4
+     - name: Setup .Net
+       with:
+        dotnet-version: ${{ env.DOTNET_VERSION }}
