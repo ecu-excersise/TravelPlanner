@@ -5,13 +5,6 @@ VisualStudioVersion = 17.12.35506.116 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{537D7B82-C6D6-438E-A7F0-BF456236F30A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{4E0EA988-82B6-4813-B97C-1B0FA952DB7A}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{DAFC1F7E-3D3E-4C56-9635-752C4067958B}"
-	ProjectSection(SolutionItems) = preProject
-		build-and-deploy.yml = build-and-deploy.yml
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,8 +18,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{DAFC1F7E-3D3E-4C56-9635-752C4067958B} = {4E0EA988-82B6-4813-B97C-1B0FA952DB7A}
 	EndGlobalSection
 EndGlobal
