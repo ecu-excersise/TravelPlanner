@@ -34,4 +34,4 @@ jobs:
        with:
          name: dotnet-results-${{ env.DOTNET_VERSION }}
          path: TestResults-${{ env.DOTNET_VERSION }}
-         if: ${{ always() }}
+       if: ${{ always() }}
