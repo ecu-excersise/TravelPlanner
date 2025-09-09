@@ -8,7 +8,6 @@ on:
 env:
   DOTNET_VERSION: '9.x'
   AZURE_WEBAPI_NAME: travel-app-api
-  AZURE_WEBAPI_PACKAGE_PATH: './publish'
   API_PROJECT_PATH: 'WebApi/WebApi.csproj'
   PUBLISH_DIR: './publish'
 
@@ -41,13 +40,13 @@ jobs:
        if: ${{ always() }}
 
      - name: Publish dotnet Api 
-       run: dotnet publish ${{ env.API_PROJECT_PATH }} --configuration Release --no-restore --output ${{ env.PUBLISH_DIR }}
+       run: dotnet publish ${{ env.API_PROJECT_PATH }} --configuration Release --no-restore --no-build --output ${{ env.PUBLISH_DIR }}
 
      - name: Upload Publish Artifact
        uses: actions/upload-artifact@v4
        with: 
          name: webapi
-         path: ${{ env.AZURE_WEBAPI_PACKAGE_PATH }}
+         path: ${{ env.PUBLISH_DIR }}
 
   deploy:
     name: Deploy to Azure
@@ -59,12 +58,18 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: webapi
-          path: ${{ env.AZURE_WEBAPI_PACKAGE_PATH }}
+          path: ${{ env.PUBLISH_DIR }}
+
+      - name: List published files
+        run: |
+          echo "Published files in ${{ env.PUBLISH_DIR }}:"
+          ls -R ${{ env.PUBLISH_DIR }}
+
           
       - name: Deploy to Azure
         uses: azure/webapps-deploy@v3
         with:
           app-name: ${{ env.AZURE_WEBAPI_NAME }}
           publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: ${{ env.AZURE_WEBAPI_PACKAGE_PATH }}
+          package: ${{ env.PUBLISH_DIR }}
 
