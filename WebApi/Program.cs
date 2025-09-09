@@ -8,6 +8,7 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 
 app.MapGet("/", () => "Hello World!");
+app.MapGet("/hi", () => "hi there");
 
 app.UseHttpsRedirection();
 app.UseAuthorization();
