@@ -27,4 +27,11 @@ jobs:
        run: dotnet build --no-restore --configuration Release
 
      - name: Test
-       run: dotnet test --no-build --no-restore --configuration Release
+       run: dotnet test --no-build --no-restore --configuration Release --logger trx --result-directory "TestResults-${{ env.DOTNET_VERSION }}"
+
+     - name: Upload test results
+       uses: actions/upload-artifect@v4
+       with:
+         name: dotnet-results-${{ env.DOTNET_VERSION }}
+         path: TestResults-${{ env.DOTNET_VERSION }}
+         if: ${{ always() }}
