@@ -12,7 +12,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
-app.MapGet("/", () => "Hello World! hwllo");
+app.MapGet("/", () => "Hello World! hello");
 app.MapGet("/hi", () => "hi there");
 
 app.Run();
