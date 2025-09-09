@@ -12,8 +12,8 @@ permissions:
 env:
   DOTNET_VERSION: '9.x'
   AZURE_WEBAPI_NAME: travel-app-api
-  AZURE_WEBAPI_PACKAGE_PATH: './TravelPlanner.Api/publish'
-  API_PROJECT_PATH: 'TravelPlanner.Api'
+  AZURE_WEBAPI_PACKAGE_PATH: './TravelPlanner.WebApi/publish'
+  API_PROJECT_PATH: 'WebApi/WebApi.csproj'
   PUBLISH_DIR: './publish'
 
 jobs: 
