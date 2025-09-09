@@ -8,7 +8,7 @@ on:
 env:
   DOTNET_VERSION: '9.x'
   AZURE_WEBAPI_NAME: travel-app-api
-  AZURE_WEBAPI_PACKAGE_PATH: 'WebApi/publish'
+  AZURE_WEBAPI_PACKAGE_PATH: './WebApi/publish'
   API_PROJECT_PATH: 'WebApi/WebApi.csproj'
   PUBLISH_DIR: './publish'
 
@@ -47,7 +47,7 @@ jobs:
        uses: actions/upload-artifact@v4
        with: 
          name: webapi
-         path: ${{ env.PUBLISH_DIR }}
+         path: ${{ env.AZURE_WEBAPI_PACKAGE_PATH }}
 
   deploy:
     name: Deploy to Azure
@@ -59,12 +59,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: webapi
-          path: './webapi'
+          path: ${{ env.AZURE_WEBAPI_PACKAGE_PATH }}
           
       - name: Deploy to Azure
         uses: azure/webapps-deploy@v3
         with:
           app-name: ${{ env.AZURE_WEBAPI_NAME }}
-          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
-          package: './webapi'
+          package: ${{ env.AZURE_WEBAPI_PACKAGE_PATH }}
 
