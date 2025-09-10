@@ -6,7 +6,7 @@ on:
     branches: ['main', 'master']
       
 env:
-  DOTNET_VERSION: '9.x'
+  DOTNET_VERSION: '9.0'
   AZURE_WEBAPI_NAME: travel-app-api
   API_PROJECT_PATH: './WebApi'
   PUBLISH_DIR: './publish'
